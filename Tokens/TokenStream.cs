@@ -1,11 +1,19 @@
+using System.Collections;
 using HsManLexer.Exceptions;
 
 namespace HsManLexer.Tokens;
 
-public class TokenStream(IEnumerable<Token> tokens)
+public class TokenStream(IEnumerable<Token> tokens) : IEnumerable<Token?>, IEnumerator<Token?>
 {
     private readonly Token[] _tokens = tokens.ToArray();
     private int _pos = -1;
+
+    public void Reset()
+    {
+        _pos = -1;
+    }
+
+    object? IEnumerator.Current => Current;
 
     public Token? Current
     {
@@ -63,5 +71,19 @@ public class TokenStream(IEnumerable<Token> tokens)
         }
         
         throw new TokenMatchFailedException(message);
+    }
+
+    public IEnumerator<Token?> GetEnumerator()
+    {
+        return new TokenStream(_tokens);
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+
+    public void Dispose()
+    {
     }
 }

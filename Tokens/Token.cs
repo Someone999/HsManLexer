@@ -13,5 +13,3 @@ public class Token(long position, string text, TokenType tokenType)
         return $"Token \"{Text}\" ({TokenType.Name}) at {Position}";
     }
 }
-
-public class IgnoredToken(long position) : Token(position, string.Empty, TokenType.Create<string>("Ignored"));
