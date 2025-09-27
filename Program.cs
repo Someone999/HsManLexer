@@ -1,7 +1,10 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
+using HsManCommonLibrary.Reader;
 using HsManLexer.Lexers;
 using HsManLexer.Rules;
+using HsManLexer.Rules.StringRules;
+using HsManLexer.Rules.StringRules.EscapeRules;
 using HsManLexer.Tokens;
 
 namespace HsManLexer;
