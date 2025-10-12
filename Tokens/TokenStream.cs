@@ -8,14 +8,20 @@ public class TokenStream(List<Token> tokens)
 
     public bool MoveNext()
     {
-        if (_pos >= tokens.Count - 1) return false;
+        if (_pos >= tokens.Count - 1)
+        {
+            return false;
+        }
         _pos++;
         return true;
     }
 
     public bool MovePrevious()
     {
-        if (_pos <= 0) return false;
+        if (_pos <= 0)
+        {
+            return false;
+        }
         _pos--;
         return true;
     }
@@ -25,13 +31,25 @@ public class TokenStream(List<Token> tokens)
     {
         _pos = Math.Min(_pos + count, tokens.Count - 1);
     }
-
     
-    public bool Match(Func<Token?, bool> predicate) => predicate(Current);
-    
-    public void MatchOrThrow(Func<Token?, bool> predicate, string message)
+    public bool LookAheadMatches(Func<Token?, bool> predicate)
     {
-        if (!predicate(Current))
+        int nextPos = _pos + 1;
+        return nextPos < tokens.Count && predicate(tokens[nextPos]);
+    }
+    
+    public void LookAheadMatchesOrThrow(Func<Token?, bool> predicate, string message)
+    {
+        if (!LookAheadMatches(predicate))
+        {
+            throw new TokenMatchFailedException(message);
+        }
+    }
+    public bool CurrentMatches(Func<Token?, bool> predicate) => predicate(Current);
+    
+    public void CurrentMatchesOrThrow(Func<Token?, bool> predicate, string message)
+    {
+        if (!CurrentMatches(predicate))
         {
             throw new TokenMatchFailedException(message);
         }
