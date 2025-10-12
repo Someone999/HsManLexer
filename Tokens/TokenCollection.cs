@@ -9,5 +9,5 @@ public class TokenCollection(IEnumerable<Token> tokens) : IEnumerable<Token>
 
     public IEnumerator<Token> GetEnumerator() => _tokens.GetEnumerator();
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-    public TokenCursor CreateCursor() => new TokenCursor(_tokens);
+    public TokenStream CreateCursor() => new TokenStream(_tokens);
 }

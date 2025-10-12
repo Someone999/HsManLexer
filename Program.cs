@@ -9,7 +9,42 @@ using HsManLexer.Tokens;
 
 namespace HsManLexer;
 
+public class ValueTracker<T> where T: struct
+{
+    private T _value;
 
+    public ValueTracker(T innerVal)
+    {
+        _value = innerVal;
+    }
+
+    public T Value
+    {
+        get => _value;
+        set => SetValue(value);
+    }
+
+    public bool AllowSetValue { get; set; }
+    public void SetValue(T value)
+    {
+        if (!AllowSetValue)
+        {
+            return;
+        }
+
+        _value = value;
+    }
+    
+    public static implicit operator ValueTracker<T>(T val)
+    {
+        return new ValueTracker<T>(val);
+    }
+    
+    public static implicit operator T(ValueTracker<T> val)
+    {
+        return val.Value;
+    }
+}
 public class Program
 {
     static void Main(string[] args)

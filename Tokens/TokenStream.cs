@@ -1,6 +1,6 @@
 namespace HsManLexer.Tokens;
 
-public class TokenCursor(List<Token> tokens)
+public class TokenStream(List<Token> tokens)
 {
     private int _pos = -1;
 
