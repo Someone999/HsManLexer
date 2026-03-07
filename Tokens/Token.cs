@@ -10,6 +10,6 @@ public class Token(long position, string text, TokenType tokenType)
 
     public override string ToString()
     {
-        return $"Token \"{Text}\" ({TokenType.Name}) at {Position}";
+        return $"[{TokenType.Name}] @{Position}: <{Text}>";
     }
 }
