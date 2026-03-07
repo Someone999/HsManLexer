@@ -1,3 +1,5 @@
+using System;
+
 namespace HsManLexer.Exceptions;
 
 public class LexerException : Exception

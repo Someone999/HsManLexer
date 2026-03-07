@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using HsManLexer.Tokens;
 
 namespace HsManLexer.Lexers;

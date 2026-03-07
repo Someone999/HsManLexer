@@ -1,3 +1,4 @@
+using System;
 using HsManCommonLibrary.Reader;
 
 namespace HsManLexer.Rules.StringRules.EscapeRules;

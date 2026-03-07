@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using HsManCommonLibrary.Reader;
 using HsManLexer.Exceptions;
 using HsManLexer.Rules;

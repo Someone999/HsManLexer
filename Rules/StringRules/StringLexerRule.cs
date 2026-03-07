@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using HsManCommonLibrary.Reader;
@@ -53,7 +55,7 @@ public class StringLexerRule : ILexerRule
 
                     if (!suc)
                     {
-                        throw new InvalidOperationException();
+                        throw new FormatException("Invalid escape character");
                     }
 
                     builder.Append(character);

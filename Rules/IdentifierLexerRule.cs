@@ -7,15 +7,14 @@ namespace HsManLexer.Rules;
 
 public class IdentifierLexerRule(IdentifierCharacterRules characterRules) : ILexerRule
 {
-    private readonly IdentifierCharacterRules _characterRules = characterRules;
     private bool IsValidFirstIdentifierChar(char c)
     {
-        return _characterRules.IsValid(c, true);
+        return characterRules.IsValid(c, true);
     }
     
     private bool IsValidIdentifierChar(char c)
     {
-        return _characterRules.IsValid(c, false);
+        return characterRules.IsValid(c, false);
     }
     
     public bool TryParse(SeekableStringReader reader, [NotNullWhen(true)] out Token? token)
