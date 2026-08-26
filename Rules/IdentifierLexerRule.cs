@@ -5,7 +5,7 @@ using HsManLexer.Tokens;
 
 namespace HsManLexer.Rules;
 
-public class IdentifierLexerRule(IdentifierCharacterRules characterRules) : ILexerRule
+public class IdentifierLexerRule(CharacterRuleSet characterRules) : ILexerRule
 {
     private bool IsValidFirstIdentifierChar(char c)
     {

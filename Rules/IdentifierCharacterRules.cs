@@ -4,12 +4,12 @@ using System.Linq;
 
 namespace HsManLexer.Rules;
 
-public class IdentifierCharacterRules
+public class CharacterRuleSet
 {
-    private readonly List<char> _invalidChars = new();
+    private readonly HashSet<char> _invalidChars = new();
     private readonly List<Func<char, bool>> _invalidCharFilters = new();
 
-    private readonly List<char> _invalidFirstChars = new();
+    private readonly HashSet<char> _invalidFirstChars = new();
     private readonly List<Func<char, bool>> _invalidFirstCharFilters = new();
 
     // 添加方法
