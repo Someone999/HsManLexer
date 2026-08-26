@@ -28,7 +28,7 @@ public class RuleBasedLexer : ILexer
                 parsed = true;
                 if (token is IgnoredToken)
                 {
-                    yield break;
+                    break;
                 }
                 
                 yield return token;
