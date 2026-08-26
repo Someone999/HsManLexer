@@ -108,6 +108,20 @@ public class NumberLexerRule : ILexerRule
             sb.Append(ch);
             reader.Read();
         }
+
+        if (hasDot)
+        {
+            var possibleSuffix =  sb.ToString()[sb.Length - 1];
+            switch (possibleSuffix)
+            {
+                case 'f' or 'F':
+                    token = new Token(startPos, sb.ToString(), TokenTypes.Float);
+                    return true;
+                default:
+                    token = new Token(startPos, sb.ToString(), TokenTypes.Double);
+                    return true;
+            }
+        }
         
         BigInteger bi = BigInteger.Parse(sb.ToString());
         token = new Token(startPos, sb.ToString(), GetTokenTypeBySuffix(reader, bi));
